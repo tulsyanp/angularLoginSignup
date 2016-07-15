@@ -1,20 +1,36 @@
 <div layout="row">
-  <div flex="35"></div>
-  <div flex="30">
+  <div flex="30"></div>
+  <div flex="40">
       <md-content class="md-no-momentum">
          <section layout="row" layout-md="column" layout-align="center center" layout-wrap>
-            <h1>Successfully Logged In</h1></br>
-         </section>
-         <section layout="row" layout-md="column" layout-align="center center" layout-wrap>
-            <h3>UserId: {{id}} </h3></br>
-         </section>
-         <section layout="row" layout-md="column" layout-align="center center" layout-wrap>
-            <h3>Email: {{email}} </h3></br>
-         </section>
-         <section layout="row" layout-md="column" layout-align="center center" layout-wrap>
-            <md-button class="md-primary" ng-href="" ng-click="logout();">Logout</md-button>
+            <h1>Welcome:&nbsp;<h2 style="color: red;">{{email}}</h2></h1>
          </section>
       </md-content>
+      <md-content class="md-no-momentum" style="height:500px;">
+         <md-toolbar md-scroll-shrink ng-if="true">
+          <div class="md-toolbar-tools">
+            <h2>
+              <span>User List</span>
+            </h2>
+            <span flex></span>
+            <md-button aria-label="Logout" ng-click="logout();">
+              Logout
+            </md-button>
+          </div>
+        </md-toolbar>
+        <md-content flex>
+          <md-list>
+            <md-list-item class="md-3-line" ng-repeat="item in todos">
+              <img src="img/profile.png" alt="{{item.email}}" class="md-avatar" style="margin-top: 23px;">
+              <div class="md-list-item-text">
+                <h3><b>UserId:</b>&nbsp;{{item.id}}</h3>
+                <h4><b>Email:</b>&nbsp;{{item.email}}</h4>
+              </div>
+              <md-divider inset></md-divider>
+            </md-list-item>
+          </md-list>
+        </md-content>
+      </md-content>
   </div>
-  <div flex="35"></div>
+  <div flex="30"></div>
 </div>

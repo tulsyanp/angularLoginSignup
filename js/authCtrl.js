@@ -46,4 +46,27 @@ app.controller('authCtrl', function ($scope, $rootScope, $routeParams, $location
             }
         });
     };
+
+    $scope.todos = [];
+    var request = $http({
+        method: "POST",
+        url: "api/users.php",
+        headers: { 'Content-Type': 'application/json' }
+    });
+    request.success(function (data) {
+        angular.forEach(data, function(value) {
+          $scope.todos.push({
+              id: value.id,
+              email: value.email,
+            });
+        });
+    });
+    /*for (var i = 0; i < 15; i++) {
+        $scope.todos.push({
+          //face: imagePath,
+          what: "Brunch this weekend?",
+          who: "Min Li Chan",
+          notes: "I'll be in your neighborhood doing errands."
+        });
+    }*/
 });

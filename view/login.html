@@ -1,0 +1,29 @@
+<div layout="row">
+  <div flex="35"></div>
+  <div flex="30">
+     <form name="loginForm" class="form-horizontal" role="form">
+        <md-content class="md-no-momentum">
+           <md-input-container class="md-block">
+              <input ng-model="login.email" type="email" name="email" placeholder="Email" ng-required="true" ng-pattern="/^.+@.+\..+$/" required>
+              <div ng-messages="signupForm.email.$error || signupForm.email.$error.email">
+                <div ng-message-exp="['required', 'pattern']">Invalid email address.</div>
+              </div>
+           </md-input-container>
+           <md-input-container class="md-block">
+              <input ng-model="login.password" type="password" name="password" placeholder="Password" ng-required="true" required>
+              <div ng-messages="loginForm.password.$error">
+                 <div ng-message="required">Password is required.</div>
+              </div>
+           </md-input-container>
+           <section layout="row" layout-md="column" layout-align="center center" layout-wrap>
+              <md-button type="submit" class="md-raised md-primary" ng-click="doLogin(login)" data-ng-disabled="loginForm.$invalid">Login</md-button>
+           </section>
+           <section layout="row" layout-md="column" layout-align="center center" layout-wrap>
+               <!--<a href="#/signup">Signup</a>-->
+               Don't have an account?<md-button class="md-primary" ng-href="#/signup">SignUp</md-button>
+           </section>
+        </md-content>
+     </form>
+  </div>
+  <div flex="35"></div>
+</div>

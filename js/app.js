@@ -46,6 +46,20 @@ app.config(['$routeProvider',
                 $rootScope.authenticated = true;
                 $rootScope.id = data.id;
                 $rootScope.email = data.email;
+                $rootScope.todos = [];
+                var request = $http({
+                    method: "POST",
+                    url: "api/users.php",
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                request.success(function (data) {
+                    angular.forEach(data, function(value) {
+                      $rootScope.todos.push({
+                          id: value.id,
+                          email: value.email,
+                        });
+                    });
+                });
             } else {
                 var nextUrl = next.$$route.originalPath;
                 if (nextUrl == '/signup' || nextUrl == '/login') {
